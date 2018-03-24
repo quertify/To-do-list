@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   
+
+    <title>To-Do-List</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <!-- Custom styles -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+     <style type="text/css" crossorigin="anonymous">
+         
+        body {
+            padding-top: 5rem;
+            padding-bottom: inherit;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        
+        .card-1 {
+            
+  padding: 10px 10px 10px 10px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+        .roundedOne {
+  width: 28px;
+            float: right;
+  height: 28px;
+  position: relative;
+  margin: 10px auto;
+  padding-right: 100px;
+  background: #fcfff4;
+  border-radius:50px;
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    border-radius: 50px;
+    &:after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      opacity: 0;
+      border-radius: 50px;
+    
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+     
+}
+        #list
+        {
+            font-size:1.4rem;
+        }
+        .card-header{
+            color: deepskyblue;
+        }
+        .btn{
+            border-radius:50px;
+            float: right;
+            background-color:aquamarine;
+            &:hover {
+            background-color: lighten(aquamarine,50%);
+            cursor: pointer;
+           cursor: hand;
+  }
+            }
+        #btnclr{
+            float: left;
+            margin-right:7px;
+            
+            
+        }
+        #btn{
+            margin-left:7px;
+        }
+             
+    </style>
+</head>
+
+    
+<body>
+
+   
+
+    <main role="main" class="container">
+    
+            <div class="card-1 mx-auto " style="width: 40rem;">
+                 <div class="card-header">
+                     <div class="row">
+                         <div class="col-md-1"><h1 id="date" style="font-size:3.2em;margin-bottom:auto;margin-top:1px;"></h1>
+                         </div>
+                         <div class="col-md-2"><h5 id="month" style="margin-left:5px;margin-bottom:auto;margin-top:auto;
+    margin-right:2;margin-bottom:auto;margin-top:auto;"></h5><h5><p id="year"style="margin-left:5px;
+    margin-right:2;"></p></h5></div>
+                         <div class="col-md-9" style="padding-left: 300px;padding-top:20px;"><h3><p id="day"></p></h3></div>
+                     </div></div>
+                    <ul class="list-group list-group-flush " id="list">
+                       <!--<li class="list-group-item">Buy new sweatshirt</li>
+                        <li class="list-group-item">Begin proomotional phase</li>
+                        <li class="list-group-item">Read an article</li>
+                        <li class="list-group-item">Try not to fall asleep</li>-->
+                    </ul>
+                   <ul class="list-group list-group-flush ">
+                       <li class="list-group-item"> 
+                           <form class="form-inline" id="form">
+                           <button type="button" class="btn"id="btnclr">
+                               <i class="fa fa-minus"></i>
+                           </button>
+                           <input type="text" class="form-control add-todo col-md-10" id="input" placeholder="Add todo">
+                               <button type="button" class="btn"id="btn">
+                                   <i class="fa fa-plus"></i>
+                               </button>
+                           </form>
+                       </li>
+                    </ul>
+                
+            </div> 
+
+        
+ 
+    </main>
+    <!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    
+    <!--to-do-list functionality script
+    ========================================================-->
+    <script>
+        var d=new Date();
+        document.getElementById("date").innerHTML=d.getDate();
+         var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+     var days = new Array();
+    days[1] = "Monday";
+    days[2] = "Tuesday";
+    days[3] = "Wednesday";
+    days[4] = "Thursday";
+    days[5] = "Friday";
+    days[6] = "Saturday";
+    days[0] = "Sunday";
+   
+    var d = new Date();
+    var n = month[d.getMonth()];
+    document.getElementById("month").innerHTML = n;
+     var e = d.getFullYear();
+    document.getElementById("year").innerHTML = e;
+    var f= days[d.getDay()];
+    document.getElementById("day").innerHTML=f;
+    </script>
+    
+    <!--adding texts -->
+    <script>
+    window.onload = function() {
+	//variables
+	var form = document.getElementById("form");
+	var input = document.getElementById("input");
+	var btn = document.getElementById("btn");
+	var list = document.getElementById("list");	
+	var btnclr = document.getElementById("btnclr");	
+	var id = 1;
+	var liItem = "";
+	var todoList = [];
+
+	//button event listener
+	btn.addEventListener("click", addTodoItem);
+
+	//list event listener
+	list.addEventListener("click", boxChecked);
+
+	//event listener for clear list
+	btnclr.addEventListener("click", clearList);
+
+	if(localStorage.length == 0) {
+		//btnclr.style.display = "none"; //hide clear btn	
+		console.log("button");
+	}
+
+	//checking localstorage has data
+	if(localStorage.length > 0) {
+		displayList();
+	}
+
+
+	//add todo item to list
+	function addTodoItem() {
+		if(input.value === "") {
+			alert("You must enter some value!");
+		}
+		else {
+			var text = input.value;	
+			var item = `<li class="list-group-item" id="li-${id}">${text}<input class="roundedOne" id="box-${id}" 			
+                         class="checkboxes" type="checkbox"></li>`;				
+			list.insertAdjacentHTML('beforeend', item);	
+			liItem = {item: text, checked: false};
+			todoList.push(liItem);		
+			id++;
+			addToLocalStorage()
+			form.reset();
+		}
+    }
+	
+
+	//adding string through style to list itme
+	function boxChecked(event) {
+		const element = event.target;
+		if(element.type === "checkbox") {
+			//element.parentNode.style.textDecoration = "line-through";
+			todoList = JSON.parse(localStorage.getItem("todoList"));
+			todoList[element.id.split('-')[1]-1].checked = element.checked.toString();
+			localStorage.setItem("todoList", JSON.stringify(todoList));
+            
+        }
+    }
+    
+	
+
+	//adding data to local storage
+	function addToLocalStorage() {
+		if(typeof(Storage) != "undefined") {
+			localStorage.setItem("todoList", JSON.stringify(todoList));
+		}
+		else {
+			alert("browser doesn't support local storage!");
+		}
+	}
+
+	//display all todo list
+	function displayList() {
+		//list.style.borderTop = "2px solid white";
+		todoList = JSON.parse(localStorage.getItem("todoList"));
+		todoList.forEach(function(element) {
+			console.log(element.item)
+			var text = element.item;
+			var item = `<li class="list-group-item" id="li-${id}">${text}<input class="roundedOne" id="box-${id}" class="checkboxes" type="checkbox"></li>`;
+			list.insertAdjacentHTML("beforeend", item);
+			//if we got a checked box, then style
+			if(element.checked) {
+				var li = document.getElementById("li-"+id);
+				li.childNodes[1].checked = element.checked;
+			}
+           
+			id++;
+		});
+	}
+
+	//clear list event listener
+	function clearList() {
+		todoList = [];
+		localStorage.clear();
+		list.innerHTML = "";
+		
+	}
+}
+    </script>
+ 
+
+</body>
+</html>
